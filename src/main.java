@@ -15,7 +15,7 @@ public class main {
 	 * Written by yosef
 	 */
 	static String getMinimumAperanceChars(String text){
-		String result ="";
+		String result = new String("");
 		Map<Character, Integer> map = new HashMap<Character, Integer>();
 
 		for (int i = 0; i < text.length(); i++) {
@@ -32,7 +32,7 @@ public class main {
 
 		for (Character letter : map.keySet()) {
 			if (map.get(letter)==min) {
-				result.concat(letter.toString());		
+				result += letter.toString();
 			}
 
 		}
@@ -57,8 +57,12 @@ public class main {
 			String text2 = textsQueue.consume();
 			
 			//enter the result into the RESULT queue
-			resultQueue.produce(getMinimumAperanceChars(text1));
-			resultQueue.produce(getMinimumAperanceChars(text2));
+			String processd = getMinimumAperanceChars(text1);
+			resultQueue.produce("Create node in RESULT queue: "+ processd);
+			System.out.println(processd);
+			processd = getMinimumAperanceChars(text2);
+			resultQueue.produce("Create node in RESULT queue: "+ processd);
+			System.out.println(processd);
 			
 			System.out.println("Done.");
 			
